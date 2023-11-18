@@ -13,8 +13,8 @@ exports.handler = async (event, context) => {
     });
     const count = await redis.get('book_N');
     const result = await redis.del('book_'+id);
-    console.log(result);
-    await redis.set('book_N', (parseInt(count) - 1) );
+    if(result)
+      await redis.set('book_N', (parseInt(count) - 1) );
 
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {

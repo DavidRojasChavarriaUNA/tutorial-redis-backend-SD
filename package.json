@@ -1,0 +1,7 @@
+{
+  "name": "redisbackend",
+  "version": "0.0.0",
+  "devDependencies": {
+	  "ioredis": "latest"
+  }
+}

@@ -11,10 +11,8 @@ exports.handler = async (event, context) => {
     redis.on("connect", function() {
       console.log("You are now connected");
     });
-    //const count = await redis.get('book_N');
     const result = await redis.del('book_'+id);
     if(result)
-      //await redis.set('book_N', (parseInt(count) - 1) );
       await redis.decr('book_N');
 
     return { statusCode: 200, headers, body: 'OK'};

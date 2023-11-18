@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
       console.log("You are now connected");
     });
    const result = await redis.set('book_'+id,event.body);
-   console.log({result})
+   console.log({result})//si es exitoso muestra 'OK'
    return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
     console.log(error);

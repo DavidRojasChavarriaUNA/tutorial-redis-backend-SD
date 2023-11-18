@@ -10,7 +10,8 @@ exports.handler = async (event, context) => {
     redis.on("connect", function() {
       console.log("You are now connected");
     });
-   await redis.set('book_'+id,event.body);
+   const result = await redis.set('book_'+id,event.body);
+   console.log({result})
    return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
     console.log(error);

@@ -14,10 +14,12 @@ exports.handler = async (event, context) => {
       console.log("You are now connected");
     });
    
-   let keys = [];
+   /*let keys = [];
    let n = await redis.get('book_N');
    for(let i = 1; i<=n; i++)
      keys.push('book_'+i);
+   const books = await redis.mget(keys);*/
+   const keys = await redis.keys('book_*')
    const books = await redis.mget(keys);
  
    books.forEach(toJson);

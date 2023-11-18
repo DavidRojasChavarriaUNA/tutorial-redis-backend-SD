@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
    for(let i = 1; i<=n; i++)
      keys.push('book_'+i);
    const books = await redis.mget(keys);*/
-   const keys = await redis.keys('book_*')
+   const keys = (await redis.keys('book_*')).filter(id => id !== 'book_N');
    const books = await redis.mget(keys);
  
    books.forEach(toJson);
